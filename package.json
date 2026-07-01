@@ -1,20 +1,48 @@
 {
-  "name": "@alihamzakamboh/agent-eyes",
+  "name": "@ah_kamboh/agent-eyes",
   "version": "0.1.0",
   "description": "Give your AI coding agent eyes — record any URL, auto-detect the exact moment it breaks, and hand the agent the frame + the error.",
-  "bin": { "agent-eyes": "bin/agent-eyes.js" },
-  "files": ["bin", "src", "skills", "examples", "PROMPT.md"],
-  "engines": { "node": ">=18" },
+  "bin": {
+    "agent-eyes": "bin/agent-eyes.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "skills",
+    "examples",
+    "PROMPT.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "demo": "node bin/agent-eyes.js http://localhost:5599 --auto examples/steps.json --out .agent-eyes"
   },
-  "keywords": ["ai", "agent", "debugging", "playwright", "context", "coding-agent", "claude", "cursor", "eyes", "mcp"],
+  "keywords": [
+    "ai",
+    "agent",
+    "debugging",
+    "playwright",
+    "context",
+    "coding-agent",
+    "claude",
+    "cursor",
+    "eyes",
+    "mcp"
+  ],
   "author": "Ali Hamza Kamboh (@ahkamboh)",
   "license": "MIT",
   "homepage": "https://github.com/ahkamboh/agent-eyes#readme",
-  "repository": { "type": "git", "url": "git+https://github.com/ahkamboh/agent-eyes.git" },
-  "bugs": { "url": "https://github.com/ahkamboh/agent-eyes/issues" },
-  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahkamboh/agent-eyes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ahkamboh/agent-eyes/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "playwright": "^1.61.1"
   }

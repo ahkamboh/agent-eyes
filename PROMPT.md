@@ -6,7 +6,7 @@ Paste this block into your AI coding agent (Claude Code / Cursor / Codex) ONE ti
 Set up agent-eyes for this project and remember the rule below.
 
 1) Install (run once):
-   npm install -g @alihamzakamboh/agent-eyes && npx playwright install chromium
+   npm install -g @ah_kamboh/agent-eyes && npx playwright install chromium
    # needs Node 18+ and ffmpeg on PATH. No API key. Fully local, MIT.
 
 2) REMEMBERED RULE for this project:
@@ -14,11 +14,11 @@ Set up agent-eyes for this project and remember the rule below.
    button/form/click do anything" — do NOT guess and do NOT edit code first.
    FIRST run agent-eyes against the running page to get ground truth:
 
-     npx @alihamzakamboh/agent-eyes <url>
+     npx @ah_kamboh/agent-eyes <url>
      # I click through the broken flow in the window it opens; it stops on close or --seconds N
 
    Or replay the exact steps headless:
-     npx @alihamzakamboh/agent-eyes <url> --auto steps.json
+     npx @ah_kamboh/agent-eyes <url> --auto steps.json
      # steps.json = [{"fill":"#email","value":"x"},{"click":"#submit"},{"wait":1200}]
 
    Then, before touching any code:
