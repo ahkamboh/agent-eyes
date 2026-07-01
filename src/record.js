@@ -25,7 +25,7 @@ async function record({ url, steps, headed, seconds, outDir }) {
   page.on('console', m => push({ type: 'console', level: m.type(), text: m.text().slice(0, 300) }));
   page.on('pageerror', e => push({ type: 'pageerror', level: 'error', text: (e.message || String(e)).slice(0, 300) }));
   page.on('response', r => push({ type: 'network', method: r.request().method(), url: r.url(), status: r.status() }));
-  page.on('requestfailed', r => push({ type: 'network', method: r.request().method(), url: r.url(), status: 0, failed: r.failure() && r.failure().errorText }));
+  page.on('requestfailed', r => push({ type: 'network', method: r.method(), url: r.url(), status: 0, failed: r.failure() && r.failure().errorText }));
   page.on('framenavigated', f => { if (f === page.mainFrame()) push({ type: 'nav', url: f.url() }); });
 
   // --- Page-side streams: DOM mutations always; user actions only in manual mode ---
