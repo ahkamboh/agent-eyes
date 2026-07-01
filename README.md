@@ -12,7 +12,7 @@ A **local, MIT, no-API-key** CLI that records any URL, fuses **5 signals on one 
 [![No API key](https://img.shields.io/badge/API%20key-none-black.svg)](#)
 [![Local](https://img.shields.io/badge/runs-100%25%20local-black.svg)](#)
 
-`npx agent-eyes <url>`
+`npx @ahkamboh/agent-eyes <url>`
 
 </div>
 
@@ -56,15 +56,14 @@ This is the hero move. Paste this block **once** into Claude Code / Cursor / Cod
 Set up agent-eyes so you can see what the app actually does.
 
 1. Install it once:
-   git clone https://github.com/ahkamboh/agent-eyes && cd agent-eyes
-   npm install
+   npm install -g @ahkamboh/agent-eyes
    npx playwright install chromium
    (Requires Node 18+ and ffmpeg on PATH.)
 
 2. From now on, whenever I report a UI bug, a "broken" feature, or any
    "it doesn't work" behavior — BEFORE you edit any code — run:
 
-     npx agent-eyes <url> --auto steps.json --seconds 8
+     npx @ahkamboh/agent-eyes <url> --auto steps.json --seconds 8
 
    where steps.json replays the flow I described, e.g.:
      [
@@ -74,7 +73,7 @@ Set up agent-eyes so you can see what the app actually does.
        { "wait": 1200 }
      ]
 
-   (Or run `npx agent-eyes <url>` with no --auto to drive it yourself.)
+   (Or run `npx @ahkamboh/agent-eyes <url>` with no --auto to drive it yourself.)
 
 3. Read `.agent-eyes/session.json`. Look at markers[] FIRST — those are the
    1–3 moments that actually broke (silent-failure, dead-click, visual-review).
@@ -90,26 +89,25 @@ Now your agent watches the real app before it edits it — one shot, fewer token
 ## Install
 
 ```bash
-git clone https://github.com/ahkamboh/agent-eyes
-cd agent-eyes
-npm install
-npx playwright install chromium
+npm install -g @ahkamboh/agent-eyes    # or run ad-hoc: npx @ahkamboh/agent-eyes <url>
+npx playwright install chromium         # one-time: downloads the headless browser
 ```
 
 **Requirements:** Node 18+ · `ffmpeg` on your PATH · no API key, fully local.
+**Source:** [github.com/ahkamboh/agent-eyes](https://github.com/ahkamboh/agent-eyes)
 
 ---
 
 ## CLI usage
 
 ```bash
-npx agent-eyes <url> [--auto steps.json] [--seconds N] [--out dir] [--fps N] [--headed]
+npx @ahkamboh/agent-eyes <url> [--auto steps.json] [--seconds N] [--out dir] [--fps N] [--headed]
 ```
 
 | Mode | Command | What happens |
 |------|---------|--------------|
-| **Manual** | `npx agent-eyes <url>` | Opens a real browser window. You click around. Stops when you close the window or after `--seconds`. |
-| **Auto** | `npx agent-eyes <url> --auto steps.json` | Headless. Replays your `steps.json` and captures everything. |
+| **Manual** | `npx @ahkamboh/agent-eyes <url>` | Opens a real browser window. You click around. Stops when you close the window or after `--seconds`. |
+| **Auto** | `npx @ahkamboh/agent-eyes <url> --auto steps.json` | Headless. Replays your `steps.json` and captures everything. |
 
 **Flags**
 
