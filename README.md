@@ -18,6 +18,31 @@ A **local, MIT, no-API-key** CLI that records any URL, fuses **5 signals on one 
 
 ---
 
+## ⚡ Paste this into your AI agent (one-time setup)
+
+Drop this block **once** into Claude Code / Cursor / Codex. It installs agent-eyes and tells your agent to run it *first* on any UI/behavior bug — so it fixes from ground truth, not guesses.
+
+```text
+Set up agent-eyes so you can see what the app actually does.
+
+1) Install once:
+   npm install -g @ah_kamboh/agent-eyes && npx playwright install chromium
+   (needs Node 18+ and ffmpeg on PATH — no API key, fully local)
+
+2) REMEMBERED RULE: whenever I hit a UI bug or ask "why didn't X work" —
+   BEFORE editing any code — run agent-eyes on the page first:
+
+     npx @ah_kamboh/agent-eyes <url>                       # I click through the broken flow
+     npx @ah_kamboh/agent-eyes <url> --auto steps.json     # or replay steps headless
+
+3) Read .agent-eyes/session.json -> the markers[] array FIRST (silent-failure,
+   dead-click, visual-review). Open the frame each marker points to and LOOK.
+
+4) Fix from that ground truth. Don't guess from the code alone. Re-run to confirm.
+```
+
+---
+
 ## The problem
 
 Your agent is blind.
@@ -45,44 +70,6 @@ And here is `frames/f002.jpg` — the frame captured at that exact moment:
 **That's the whole point.** The failure is *invisible on screen*. The user clicked submit, the server rejected it with a `422`, and the UI gave zero feedback. A screenshot alone lies to you. A console log alone is a haystack. agent-eyes fuses them and says: *here is the frame, here is the click that caused it, here is the status code, and here is why it's a bug.*
 
 The agent jumps straight to the fix.
-
----
-
-## ⚡ One-time setup: paste this into your agent
-
-This is the hero move. Paste this block **once** into Claude Code / Cursor / Codex. It installs agent-eyes and teaches your agent to reach for it *first* on any UI or behavior bug.
-
-```
-Set up agent-eyes so you can see what the app actually does.
-
-1. Install it once:
-   npm install -g @ah_kamboh/agent-eyes
-   npx playwright install chromium
-   (Requires Node 18+ and ffmpeg on PATH.)
-
-2. From now on, whenever I report a UI bug, a "broken" feature, or any
-   "it doesn't work" behavior — BEFORE you edit any code — run:
-
-     npx @ah_kamboh/agent-eyes <url> --auto steps.json --seconds 8
-
-   where steps.json replays the flow I described, e.g.:
-     [
-       { "fill": "#email", "value": "test@example.com" },
-       { "fill": "#password", "value": "hunter2" },
-       { "click": "#submit" },
-       { "wait": 1200 }
-     ]
-
-   (Or run `npx @ah_kamboh/agent-eyes <url>` with no --auto to drive it yourself.)
-
-3. Read `.agent-eyes/session.json`. Look at markers[] FIRST — those are the
-   1–3 moments that actually broke (silent-failure, dead-click, visual-review).
-   Open the frame each marker points to and confirm with your own eyes.
-
-4. Fix the bug based on that ground truth. Do NOT guess from the code alone.
-```
-
-Now your agent watches the real app before it edits it — one shot, fewer tokens, no wrong turns.
 
 ---
 
