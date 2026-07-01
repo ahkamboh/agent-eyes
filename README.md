@@ -20,26 +20,33 @@ A **local, MIT, no-API-key** CLI that records any URL, fuses **5 signals on one 
 
 ## ⚡ Paste this into your AI agent (one-time setup)
 
-Drop this block **once** into Claude Code / Cursor / Codex. It installs agent-eyes and tells your agent to run it *first* on any UI/behavior bug — so it fixes from ground truth, not guesses.
+Paste this **once** into Claude Code / Cursor / Codex. It installs agent-eyes and **saves a rule to your global agent config** — so your agent runs it *first* on any UI bug in **every project**, automatically, not just this chat.
 
 ```text
-Set up agent-eyes so you can see what the app actually does.
+Set up agent-eyes and make it stick across EVERY project.
 
-1) Install once:
+1) Install once (global — works in every project after this):
    npm install -g @ah_kamboh/agent-eyes && npx playwright install chromium
    (needs Node 18+ and ffmpeg on PATH — no API key, fully local)
 
-2) REMEMBERED RULE: whenever I hit a UI bug or ask "why didn't X work" —
-   BEFORE editing any code — run agent-eyes on the page first:
+2) Make the rule PERMANENT — write it into my GLOBAL agent-rules file so it
+   applies to every project automatically (not just this conversation):
+     - Claude Code -> ~/.claude/CLAUDE.md
+     - Cursor      -> Settings > Rules > User Rules
+     - Codex       -> global AGENTS.md
+   The rule to save, verbatim:
+     "Whenever I report a UI bug or ask 'why didn't X work' — BEFORE editing code —
+      run agent-eyes on the page first:
+        npx @ah_kamboh/agent-eyes <url>                     (I drive the broken flow), or
+        npx @ah_kamboh/agent-eyes <url> --auto steps.json   (replay steps headless).
+      Then read .agent-eyes/session.json — the markers[] array FIRST (silent-failure,
+      dead-click, visual-review); open the frame each marker points to and LOOK;
+      fix from that ground truth, don't guess from code; re-run to confirm."
 
-     npx @ah_kamboh/agent-eyes <url>                       # I click through the broken flow
-     npx @ah_kamboh/agent-eyes <url> --auto steps.json     # or replay steps headless
-
-3) Read .agent-eyes/session.json -> the markers[] array FIRST (silent-failure,
-   dead-click, visual-review). Open the frame each marker points to and LOOK.
-
-4) Fix from that ground truth. Don't guess from the code alone. Re-run to confirm.
+3) Confirm the rule is saved, then follow it from now on.
 ```
+
+> Pasting into a chat only lasts that session — saving it to the global rules file above is what makes agent-eyes fire **automatically in every project**.
 
 ---
 

@@ -1,15 +1,17 @@
 # agent-eyes — one-time setup for your AI agent
 
-Paste this block into your AI coding agent (Claude Code / Cursor / Codex) ONE time. It installs agent-eyes and teaches the agent to run it first whenever a UI or behavior bug shows up — so it fixes from ground truth instead of guessing.
+Paste this block into your AI coding agent (Claude Code / Cursor / Codex) ONE time. It installs agent-eyes and **saves a rule to your global agent config**, so the agent runs it first on any UI or behavior bug — in **every project**, automatically, not just this chat. (Pasting into a chat only lasts that session; the global rules file is what makes it stick.)
 
 ```
-Set up agent-eyes for this project and remember the rule below.
+Set up agent-eyes and make it stick across EVERY project.
 
 1) Install (run once):
    npm install -g @ah_kamboh/agent-eyes && npx playwright install chromium
    # needs Node 18+ and ffmpeg on PATH. No API key. Fully local, MIT.
 
-2) REMEMBERED RULE for this project:
+2) SAVE THIS RULE to your GLOBAL agent-rules file so it applies to every project,
+   not just this chat  (Claude Code -> ~/.claude/CLAUDE.md ; Cursor -> Settings >
+   Rules > User Rules ; Codex -> global AGENTS.md):
    Whenever I hit a UI or behavior bug — or ask "why did X not work / why didn't this
    button/form/click do anything" — do NOT guess and do NOT edit code first.
    FIRST run agent-eyes against the running page to get ground truth:
