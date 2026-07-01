@@ -1,5 +1,5 @@
 {
-  "name": "@ahkamboh/agent-eyes",
+  "name": "@alihamzakamboh/agent-eyes",
   "version": "0.1.0",
   "description": "Give your AI coding agent eyes — record any URL, auto-detect the exact moment it breaks, and hand the agent the frame + the error.",
   "bin": { "agent-eyes": "bin/agent-eyes.js" },
