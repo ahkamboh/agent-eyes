@@ -1,0 +1,5 @@
+node_modules
+.agent-eyes
+_video
+*.log
+.DS_Store

@@ -1,0 +1,6 @@
+[
+  { "fill": "#email", "value": "taken@example.com" },
+  { "fill": "#password", "value": "hunter2" },
+  { "click": "#submit" },
+  { "wait": 1200 }
+]

@@ -1,0 +1,27 @@
+{
+  "name": "agent-eyes",
+  "version": "0.1.0",
+  "description": "Give your AI coding agent eyes — record any URL, auto-detect the exact moment it breaks, and hand the agent the frame + the error.",
+  "bin": {
+    "agent-eyes": "bin/agent-eyes.js"
+  },
+  "scripts": {
+    "demo": "node bin/agent-eyes.js http://localhost:5599 --auto examples/steps.json --out .agent-eyes"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "debugging",
+    "playwright",
+    "context",
+    "coding-agent",
+    "claude",
+    "cursor",
+    "eyes"
+  ],
+  "author": "Ali Hamza Kamboh (@ahkamboh)",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.61.1"
+  }
+}
